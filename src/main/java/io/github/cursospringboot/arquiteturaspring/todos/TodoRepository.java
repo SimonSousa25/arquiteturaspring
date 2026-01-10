@@ -5,4 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository // não é obrigatória essa annotation
 public interface TodoRepository extends JpaRepository<TodoEntity, Integer> {
+    boolean existsByDescricao(String descricao);
 }
