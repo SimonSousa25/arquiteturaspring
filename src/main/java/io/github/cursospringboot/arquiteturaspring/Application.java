@@ -17,6 +17,7 @@ public class Application {
 				new SpringApplicationBuilder(Application.class);
 		builder.bannerMode(Banner.Mode.OFF);
 		builder.profiles("producao", "homologacao");
+		// builder.lazyInitialization(true); // dessa forma todos os meus beans vão ser Lazy
 
 		builder.run(args); // -> dá para passar estes args para um container docker
 
