@@ -4,7 +4,6 @@ import io.github.cursospringboot.arquiteturaspring.todos.TodoEntity;
 import io.github.cursospringboot.arquiteturaspring.todos.TodoValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -39,9 +38,15 @@ public class BeanGerenciado { // com a annotation @Lazy, este bean so vai ser in
     @Autowired /** Injeção via propriedade */
     private TodoValidator validator;
 
+    @Autowired
+    private AppProperties properties;
+
     @Autowired /** Injeção via construtor (forma recomendada pelo spring)*/
-    public BeanGerenciado(TodoValidator validator) {
+    public BeanGerenciado(TodoValidator validator, AppProperties properties) {
         this.validator = validator;
+        this.properties = properties;
+
+        String variavel = properties.getVariavel();
     }
 
     public void utilizar() {
